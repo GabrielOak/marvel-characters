@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 export const Wrapper = styled.main`
   display: flex;
@@ -9,16 +10,31 @@ export const Wrapper = styled.main`
   border-radius: 10px;
   margin: 10px;
 
+  ${media.lessThan('medium')`
+      width: 13rem;
+      height: 2rem;
+  `}
+
   svg {
-    width: 2rem;
+    width: 2.3rem;
+    height: 100%;
+    border-radius: 0px 10px 10px 0px;
     cursor: pointer;
+
+    ${media.lessThan('medium')`
+      width: 2rem;
+  `}
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
   }
 `;
 
 export const Input = styled.input`
   border-radius: 10px;
-  width: 80%;
-  font-size: 18px;
+  width: 90%;
+  font-size: 16px;
   outline: none;
   border: none;
 `;
