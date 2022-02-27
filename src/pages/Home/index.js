@@ -6,19 +6,26 @@ import SearchBar from '../../components/SearchBar';
 import api from '../../services/api';
 
 import * as S from './styles';
+import LoadingIndicator from '../../components/LoadingIndicator';
 
 const Home = () => {
   const [characters, setCharacters] = useState([]);
   const [limit] = useState(10);
+  const [loading, setLoading] = useState(false);
   const options = ['A-Z', 'Z-A'];
 
   const getCharacters = async () => {
+    setLoading(true);
     api
       .get(`/characters?limit=${limit}`)
       .then((response) => {
         setCharacters(response.data.data.results);
+        setLoading(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -37,10 +44,15 @@ const Home = () => {
           <Dropdown options={options} />
         </S.FilterContainer>
         <S.CardsContainer>
-          {!!characters &&
+          {loading ? (
+            <LoadingIndicator />
+          ) : characters ? (
             characters.map((character) => (
               <Card key={character.id} content={character} />
-            ))}
+            ))
+          ) : (
+            <h1>No found!</h1>
+          )}
         </S.CardsContainer>
       </S.Container>
     </S.Wrapper>
