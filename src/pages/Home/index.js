@@ -10,14 +10,25 @@ import LoadingIndicator from '../../components/LoadingIndicator';
 
 const Home = () => {
   const [characters, setCharacters] = useState([]);
+  const [search, setSearch] = useState('');
   const [limit] = useState(10);
   const [loading, setLoading] = useState(false);
   const options = ['A-Z', 'Z-A'];
 
+  const generateURL = () => {
+    let url = `/characters?limit=${limit}`;
+    if (search) {
+      url += `&nameStartsWith=${search}`;
+    }
+
+    return url;
+  };
+
   const getCharacters = async () => {
     setLoading(true);
+    const url = generateURL();
     api
-      .get(`/characters?limit=${limit}`)
+      .get(url)
       .then((response) => {
         setCharacters(response.data.data.results);
         setLoading(false);
@@ -40,18 +51,22 @@ const Home = () => {
           <h1>Characters</h1>
         </S.HeaderContainer>
         <S.FilterContainer>
-          <SearchBar />
+          <SearchBar
+            search={search}
+            setSearch={setSearch}
+            onClick={() => getCharacters()}
+          />
           <Dropdown options={options} />
         </S.FilterContainer>
         <S.CardsContainer>
           {loading ? (
             <LoadingIndicator />
-          ) : characters ? (
+          ) : characters.length ? (
             characters.map((character) => (
               <Card key={character.id} content={character} />
             ))
           ) : (
-            <h1>No found!</h1>
+            <h1>Not found!</h1>
           )}
         </S.CardsContainer>
       </S.Container>
