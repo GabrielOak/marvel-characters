@@ -13,8 +13,11 @@ export const Container = styled.div`
 
 export const HeaderContainer = styled.div`
   color: ${Theme.black}; 
-  padding-left: 5px;
   border-left: 0.7rem solid ${Theme.red}};
+  padding-left: 5px;
+  & h1 {
+    margin: 4px;
+  }
 `;
 
 export const FilterContainer = styled.div`

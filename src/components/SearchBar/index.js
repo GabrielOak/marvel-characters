@@ -9,7 +9,6 @@ const SearchBar = ({ search, setSearch, onClick }) => {
   };
 
   const keyPress = (key) => {
-    console.log(key);
     if (key === 'Enter') {
       onClick();
     }

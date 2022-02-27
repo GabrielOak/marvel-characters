@@ -10,7 +10,7 @@ export const Card = styled.main`
   transition: transform 250ms;
   cursor: pointer;
   ${media.lessThan('medium')`
-    width: 9rem;
+    width: 8rem;
   `};
 
   &:hover {
@@ -27,7 +27,7 @@ export const Image = styled.div`
   border-radius: 10px;
 
   ${media.lessThan('medium')`
-    height: 9rem;
+    height: 8rem;
   `};
 `;
 
