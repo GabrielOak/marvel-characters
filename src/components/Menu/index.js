@@ -6,7 +6,7 @@ import logo from '../../assets/logo.png';
 const Menu = () => (
   <S.Wrapper>
     <S.Logo src={logo} aria-label="Marvel" />
-    <S.Link href="/">Home</S.Link>
+    <S.NavLink to="/">Home</S.NavLink>
   </S.Wrapper>
 );
 export default Menu;
