@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../../components/Card';
 import Dropdown from '../../components/Dropdown';
-import Menu from '../../components/Menu';
 import SearchBar from '../../components/SearchBar';
 import api from '../../services/api';
 
@@ -87,7 +86,6 @@ const Home = () => {
 
   return (
     <S.Wrapper>
-      <Menu />
       <S.Container>
         <S.HeaderContainer>
           <h1>Characters</h1>

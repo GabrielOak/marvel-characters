@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const Wrapper = styled.menu`
   display: flex;
@@ -15,7 +15,7 @@ export const Logo = styled.img`
   margin-left: 10px;
 `;
 
-export const NavLink = styled(Link)`
+export const Link = styled(NavLink)`
   color: white;
   text-decoration: none;
   font-size: 24px;
