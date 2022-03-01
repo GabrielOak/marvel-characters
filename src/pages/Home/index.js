@@ -21,11 +21,16 @@ const Home = () => {
   const [isPrevBttnDis, setIsPrevButtnDis] = useState(false);
   const [isNextBttnDis, setIsNextButtnDis] = useState(false);
 
+  const [orderFilter, setOrderFilter] = useState('name');
+
   const [loading, setLoading] = useState(false);
-  const options = ['A-Z', 'Z-A'];
+  const options = [
+    { name: 'A-Z', value: 'name' },
+    { name: 'Z-A', value: '-name' },
+  ];
 
   const generateURL = () => {
-    let url = `/characters?limit=${limit}`;
+    let url = `/characters?limit=${limit}&orderBy=${orderFilter}`;
     if (offset) {
       url += `&offset=${offset}`;
     }
@@ -91,7 +96,7 @@ const Home = () => {
 
   useEffect(() => {
     getCharacters();
-  }, [offset]);
+  }, [offset, orderFilter]);
 
   return (
     <S.Wrapper>
@@ -105,7 +110,11 @@ const Home = () => {
             setSearch={setSearch}
             onClick={() => handleSearch()}
           />
-          <Dropdown options={options} />
+          <Dropdown
+            options={options}
+            value={orderFilter}
+            setValue={setOrderFilter}
+          />
         </S.FilterContainer>
         <S.CardsContainer>
           {loading ? (
