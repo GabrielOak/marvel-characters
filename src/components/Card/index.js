@@ -5,6 +5,7 @@ import { StarOutline } from '@styled-icons/material/StarOutline';
 import { Star } from '@styled-icons/material-outlined/Star';
 
 import * as S from './styles';
+import Theme from '../Theme';
 
 const Card = ({ content }) => {
   const { path, extension } = content.thumbnail;
@@ -19,7 +20,6 @@ const Card = ({ content }) => {
   const handleFavorite = () => {
     if (favorite) {
       removeFromFavorites(content.id);
-      content.favorite = true;
       setFavorite(true);
     } else {
       addToFavorites(content);
@@ -48,7 +48,7 @@ const Card = ({ content }) => {
           <Star
             width={30}
             onClick={(event) => handleFavorite(event)}
-            color="yellow"
+            color={Theme.gold}
           />
         ) : (
           <StarOutline width={30} onClick={(event) => handleFavorite(event)} />

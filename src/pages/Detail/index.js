@@ -6,6 +6,13 @@ import * as S from './styles';
 
 import LoadingIndicator from '../../components/LoadingIndicator';
 import ComicCard from '../../components/ComicCard';
+import NoDataFound from '../../components/NoDataFound';
+import Button from '../../components/Button';
+
+import { StarOutline } from '@styled-icons/material/StarOutline';
+import { Star } from '@styled-icons/material-outlined/Star';
+import { useFavorites } from '../../context/favorites';
+import Theme from '../../components/Theme';
 
 const Detail = () => {
   const { id } = useParams();
@@ -16,6 +23,11 @@ const Detail = () => {
 
   const [comics, setComics] = useState([]);
   const [loadingComics, setLoadingComics] = useState(false);
+
+  const [favorite, setFavorite] = useState(false);
+
+  const { favorites, isFavorite, removeFromFavorites, addToFavorites } =
+    useFavorites();
 
   const getCharacter = async () => {
     setLoading(true);
@@ -31,13 +43,22 @@ const Detail = () => {
       });
   };
 
+  const handleFavorite = () => {
+    if (favorite) {
+      removeFromFavorites(character.id);
+      setFavorite(true);
+    } else {
+      addToFavorites(character);
+      setFavorite(false);
+    }
+  };
+
   const getComics = async () => {
     setLoadingComics(true);
     api
       .get(`/characters/${id}/comics`)
       .then((response) => {
         setComics(response.data.data.results);
-        console.log(response.data.data.results);
         setLoadingComics(false);
       })
       .catch((err) => {
@@ -47,9 +68,14 @@ const Detail = () => {
   };
 
   useEffect(() => {
+    setFavorite(isFavorite(parseInt(id)));
     getCharacter();
     getComics();
   }, []);
+
+  useEffect(() => {
+    setFavorite(isFavorite(parseInt(id)));
+  }, [favorites]);
 
   useEffect(() => {
     if (character) {
@@ -70,6 +96,13 @@ const Detail = () => {
             <S.InfoContainer>
               <div>
                 <h1>{character.name}</h1>
+                <Button
+                  title="Favorite"
+                  icon={
+                    favorite ? <Star color={Theme.gold} /> : <StarOutline />
+                  }
+                  onClick={handleFavorite}
+                />
                 <p>{character.description}</p>
               </div>
               <S.MetricsContainer>
@@ -94,7 +127,9 @@ const Detail = () => {
           </S.ComicsContainer>
         </div>
       ) : (
-        <h1>No data found </h1>
+        <NoDataFound>
+          <h2>No data found</h2>
+        </NoDataFound>
       )}
     </S.Wrapper>
   );

@@ -7,6 +7,7 @@ import api from '../../services/api';
 import * as S from './styles';
 import LoadingIndicator from '../../components/LoadingIndicator';
 import Pagination from '../../components/Pagination';
+import NoDataFound from '../../components/NoDataFound';
 
 const Home = () => {
   const limit = 15;
@@ -59,20 +60,28 @@ const Home = () => {
     getCharacters();
   };
 
-  const checkPagination = () => {
-    const nextOffset = page * limit;
-
+  const checkPrevButton = () => {
     if (page <= 1) {
       setIsPrevButtnDis(true);
     } else {
       setIsPrevButtnDis(false);
     }
+  };
+
+  const checkNextButton = () => {
+    const nextOffset = page * limit;
 
     if (nextOffset >= totalResult) {
       setIsNextButtnDis(true);
     } else {
       setIsNextButtnDis(false);
     }
+  };
+
+  const checkPagination = () => {
+    checkPrevButton();
+    checkNextButton();
+
     setOffset((page - 1) * limit);
   };
 
@@ -106,7 +115,9 @@ const Home = () => {
               <Card key={character.id} content={character} />
             ))
           ) : (
-            <h1>Not found!</h1>
+            <NoDataFound>
+              <h2>No data found</h2>
+            </NoDataFound>
           )}
         </S.CardsContainer>
         {!loading && characters.length > 0 && (
