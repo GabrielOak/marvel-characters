@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   span {
     font-size: 20px;
     font-weight: 600;
-    color: black;
+    color: white;
   }
 `;
 
@@ -18,7 +18,7 @@ export const Button = styled.button`
   width: 3.5rem;
   border-radius: 50%;
   border: none;
-  color: black;
+  color: white;
   background-color: transparent;
   cursor: pointer;
 

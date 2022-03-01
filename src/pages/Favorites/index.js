@@ -3,6 +3,7 @@ import Card from '../../components/Card';
 import { useFavorites } from '../../context/favorites';
 
 import * as S from './styles';
+import NoDataFound from '../../components/NoDataFound';
 
 const Favorites = () => {
   const { favorites } = useFavorites();
@@ -14,9 +15,15 @@ const Favorites = () => {
           <h1>Favorites Characters</h1>
         </S.HeaderContainer>
         <S.CardsContainer>
-          {favorites.map((character) => (
-            <Card content={character} key={character.id} />
-          ))}
+          {favorites.length > 0 ? (
+            favorites.map((character) => (
+              <Card content={character} key={character.id} />
+            ))
+          ) : (
+            <NoDataFound>
+              <h2>Add characters to your favorites list</h2>
+            </NoDataFound>
+          )}
         </S.CardsContainer>
       </S.Container>
     </S.Wrapper>

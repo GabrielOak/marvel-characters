@@ -15,8 +15,11 @@ export const HeaderContainer = styled.div`
   color: ${Theme.black}; 
   border-left: 0.7rem solid ${Theme.red}};
   padding-left: 5px;
+  margin-left: 3%;
+
   & h1 {
-    margin: 4px;
+    margin-top: 15px;
+    color: white;
   }
 `;
 

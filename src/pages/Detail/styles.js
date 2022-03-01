@@ -8,6 +8,10 @@ export const Wrapper = styled.main`
   justify-content: center;
   margin-top: 20px;
   margin-bottom: 20px;
+
+  h1 {
+    color: white;
+  }
 `;
 
 export const Image = styled.img`
@@ -40,6 +44,7 @@ export const InfoContainer = styled.div`
 
   h1 {
     margin: 5px;
+    color: black;
   }
 
   p {

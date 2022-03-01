@@ -83,7 +83,7 @@ const Detail = () => {
               </S.MetricsContainer>
             </S.InfoContainer>
           </S.Banner>
-          <h1>Comics</h1>
+          {comics.length > 0 && <h1>Comics</h1>}
           <S.ComicsContainer>
             {loadingComics ? (
               <LoadingIndicator />
