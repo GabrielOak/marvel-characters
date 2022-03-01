@@ -7,6 +7,7 @@ const Menu = () => (
   <S.Wrapper>
     <S.Logo src={logo} aria-label="Marvel" />
     <S.Link to="/">Home</S.Link>
+    <S.Link to="/favorites">Favorites</S.Link>
   </S.Wrapper>
 );
 export default Menu;

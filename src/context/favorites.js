@@ -14,6 +14,10 @@ export const FavoritesProvider = ({ children }) => {
     setFavorites(result);
   };
 
+  const isFavorite = (id) => {
+    return favorites.some((item) => item.id === id);
+  };
+
   useEffect(() => {
     const favoritesStorage = localStorage.getItem('@App:favorites');
     if (favoritesStorage) {
@@ -31,7 +35,13 @@ export const FavoritesProvider = ({ children }) => {
 
   return (
     <FavoritesContext.Provider
-      value={{ favorites, setFavorites, addToFavorites, removeFromFavorites }}
+      value={{
+        favorites,
+        setFavorites,
+        addToFavorites,
+        removeFromFavorites,
+        isFavorite,
+      }}
     >
       {children}
     </FavoritesContext.Provider>

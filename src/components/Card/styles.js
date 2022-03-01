@@ -6,7 +6,7 @@ export const Card = styled.main`
   width: 18rem;
   border-radius: 10px;
   margin: 16px;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: white;
   transition: transform 250ms;
   cursor: pointer;
   ${media.lessThan('medium')`
@@ -24,7 +24,14 @@ export const Image = styled.div`
   background-color: ${Theme.lightGray};
   background-image: url(${(props) => props.img});
   background-size: cover;
-  border-radius: 10px;
+
+  svg {
+    padding: 8px;
+  }
+
+  svg:hover {
+    color: yellow;
+  }
 
   ${media.lessThan('medium')`
     height: 8rem;
@@ -33,12 +40,14 @@ export const Image = styled.div`
 
 export const InfoContainer = styled.div`
   display: flex;
+  width: 100%;
+  justify-content: space-between;
   border-radius: 0 0 10px 10px;
   align-items: center;
   justify-content: center;
 `;
 
 export const Name = styled.h3`
-  color: ${Theme.white};
+  color: black;
   text-align: center;
 `;
