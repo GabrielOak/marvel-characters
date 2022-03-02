@@ -5,7 +5,7 @@ const ts = 'gabriel';
 const hash = '963e48e2ab4a8cd2f93677972e1401cd';
 
 const api = axios.create({
-  baseURL: 'http://gateway.marvel.com/v1/public/',
+  baseURL: 'https://gateway.marvel.com/v1/public/',
   timeout: 5000,
   params: {
     ts: ts,
