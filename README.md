@@ -2,7 +2,23 @@
 
 # :superhero: Marvel Characters
 
-O Marvel Characters é um site onde é possivel ver os personagens da marvel, informações sobre eles e criar uma lista com os seus personagens favoritos.
+O Marvel Characters é um site onde é possível ver os personagens da Marvel, informações sobre eles e criar uma lista com os seus personagens favoritos.
+
+Os dados são fornecidos  pela [API da Marvel](https://developer.marvel.com/).
+
+O site tem uma versão de teste, que pode ser acessada pelo seguinte [link](https://marvel-characters-steel.vercel.app/).
+
+
+### Funcionalidades: 
+
+- Listar personagens
+- Pesquisar pelo nome
+- Ordenar a listagem
+- Paginação
+- Página de detalhe com informações sobre o personagem
+- Listagem de personagens favoritos
+- Adicionar ou remover dos favoritos
+- Responsividade
 
 ### Tecnologias utilizadas
 Para a construção do site, foram utilizadas as seguintes tecnologias:
@@ -37,6 +53,8 @@ O site ficará disponível em http://localhost:3000/
 
 ## :test_tube: Testes
 
+Para a realização dos testes de inteface foi utilizado a blioteca [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) e para os testes de integração foi utilizado o [Cypress](https://www.cypress.io/).
+
 Para rodar os testes:
 
 ```
@@ -49,14 +67,14 @@ Para gerar o relatório de coverage:
 yarn tests --coverage --watchAll=false
 ```
 ### Cypress
-Para rodar os testes do cypress, é necessários estar com o servidor do projeto rodando.
+Para rodar os testes do cypress, é necessário estar com o servidor do projeto rodando.
 
 Para rodar os testes do cypress pelo terminal:
 
 ```
 yarn cypress run
 ```
-Também é possivel rodar os testes do cypress pela interface:
+Também é possível rodar os testes do cypress pela interface:
 
 ```
 yarn cypress open
