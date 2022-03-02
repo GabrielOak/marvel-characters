@@ -14,7 +14,7 @@ const ComicCard = ({ comic }) => {
 
   return (
     <S.Wrapper>
-      <S.Image src={image} />
+      <S.Image src={image} aria-label={comic.title} />
       <S.InfoContainer>
         <h2>{comic.title}</h2>
         <S.DescriptionContainer>
