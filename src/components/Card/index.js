@@ -37,7 +37,7 @@ const Card = ({ content }) => {
   }, [favorite, favorites]);
 
   return (
-    <S.Card>
+    <S.Card data-cy="character-card">
       <S.Image
         img={image}
         aria-label={content.name}
@@ -49,9 +49,14 @@ const Card = ({ content }) => {
             width={30}
             onClick={(event) => handleFavorite(event)}
             color={Theme.gold}
+            data-cy="favorite-icon"
           />
         ) : (
-          <StarOutline width={30} onClick={(event) => handleFavorite(event)} />
+          <StarOutline
+            width={30}
+            onClick={(event) => handleFavorite(event)}
+            data-cy="favorite-icon"
+          />
         )}
       </S.Image>
       <S.InfoContainer>

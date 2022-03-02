@@ -13,7 +13,7 @@ const ComicCard = ({ comic }) => {
   const creators = comic.creators.items.map((character) => character.name);
 
   return (
-    <S.Wrapper>
+    <S.Wrapper data-cy="comic-card">
       <S.Image src={image} aria-label={comic.title} />
       <S.InfoContainer>
         <h2>{comic.title}</h2>
