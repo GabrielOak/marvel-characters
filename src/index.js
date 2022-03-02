@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
 import { FavoritesProvider } from './context/favorites';
 import './index.css';
-import Router from './router';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <FavoritesProvider>
-      <Router />
-    </FavoritesProvider>
-  </React.StrictMode>,
+  <FavoritesProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </FavoritesProvider>,
   document.getElementById('root')
 );
