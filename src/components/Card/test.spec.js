@@ -1,6 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Card from '.';
+import { BrowserRouter } from 'react-router-dom';
+import { FavoritesProvider } from '../../context/favorites';
 
 const character = {
   name: 'Spider-man',
@@ -12,7 +14,12 @@ const character = {
 
 describe('<Card />', () => {
   it('should render the card', () => {
-    render(<Card content={character} />);
+    render(
+      <FavoritesProvider>
+        <Card content={character} />
+      </FavoritesProvider>,
+      { wrapper: BrowserRouter }
+    );
 
     expect(
       screen.getByRole('heading', { name: /spider-man/i })

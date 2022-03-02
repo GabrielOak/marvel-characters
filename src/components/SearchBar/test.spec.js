@@ -7,7 +7,7 @@ describe('<SeachBar />', () => {
     render(<SeachBar />);
 
     expect(screen.getByTestId(/search-input/i)).toBeInTheDocument();
-    expect(screen.getByPlaceholderText(/pesquisar/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/search/i)).toBeInTheDocument();
     expect(screen.getByTestId('icon')).toBeInTheDocument();
   });
 });

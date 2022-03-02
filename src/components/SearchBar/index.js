@@ -18,7 +18,7 @@ const SearchBar = ({ search, setSearch, onClick }) => {
     <S.Wrapper>
       <S.Input
         type="text"
-        placeholder="Pesquisar"
+        placeholder="Search"
         value={search || ''}
         data-testid="search-input"
         onChange={(event) => onChengeHandler(event.target.value)}
